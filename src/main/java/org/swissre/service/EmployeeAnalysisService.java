@@ -4,7 +4,6 @@ import org.swissre.model.Employee;
 import org.swissre.util.CSVReader;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,15 +51,20 @@ public class EmployeeAnalysisService {
 
         Double totalSubordinateSalary = 0.0;
 
-        for(Employee subordinate : subordinates) {
-            totalSubordinateSalary += subordinate.getSalary();
-        }
+        totalSubordinateSalary = getTotalSubordinateSalary(subordinates, totalSubordinateSalary);
 
         Double avgSubordinateSalary = totalSubordinateSalary/subordinates.size();
         if(employeeSalary < (1.2 * avgSubordinateSalary)) {
             System.out.println("Employee with Employee ID "
                     + e.getId() + " earn less than " + ((1.2 * avgSubordinateSalary) - employeeSalary));
         }
+    }
+
+    private Double getTotalSubordinateSalary(List<Employee> subordinates, Double totalSubordinateSalary) {
+        for(Employee subordinate : subordinates) {
+            totalSubordinateSalary += subordinate.getSalary();
+        }
+        return totalSubordinateSalary;
     }
 
     private void checkEmployeeEarnMore(Employee e, Map<Integer, Employee> employeeMap) {
@@ -74,9 +78,7 @@ public class EmployeeAnalysisService {
 
         Double totalSubordinateSalary = 0.0;
 
-        for(Employee subordinate : subordinates) {
-            totalSubordinateSalary += subordinate.getSalary();
-        }
+        totalSubordinateSalary = getTotalSubordinateSalary(subordinates, totalSubordinateSalary);
 
         Double avgSubordinateSalary = totalSubordinateSalary/subordinates.size();
         if(employeeSalary > (1.5 * avgSubordinateSalary)) {
@@ -108,5 +110,4 @@ public class EmployeeAnalysisService {
             }
         }
     }
-
 }
