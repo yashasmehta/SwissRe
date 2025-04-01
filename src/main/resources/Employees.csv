@@ -1,0 +1,9 @@
+Id,FirstName,LastName,Salary,ManagerId
+123,Joe,Doe,100000,0
+124,Martin,Chekov,45000,123
+125,Bob,Ronstad,20000,124
+126,Alice,Hasacat,15000,125
+127,Mark,Johnson,13000,126
+128,Shane,Watson,16000,127
+129,Brett,Hardleaf,10000,128
+130,Sachin,Tendulkar,10000,128
